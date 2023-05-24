@@ -51,7 +51,7 @@ public class ProjektController {
     @DeleteMapping("/projekt/{id}")
     public ResponseEntity<HttpStatus> deleteProjektById(@PathVariable("id") Long id) {
         projektRepository.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/projekt/{projektId}/user/{userId}")

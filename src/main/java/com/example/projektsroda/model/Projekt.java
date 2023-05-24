@@ -24,6 +24,18 @@ public class Projekt {
     private String nazwa;
     private String opis;
 
+    @CreationTimestamp
+    @Column(updatable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+    private LocalDateTime dataCzasUtworzenia;
+    @UpdateTimestamp
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate data_oddania;
+
+    @UpdateTimestamp
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+    private LocalDateTime dataCzasModyfikacji;
+
     @ManyToMany
     @JoinTable(name = "projekt_users",
             joinColumns = {@JoinColumn(name = "projekt_id")},
@@ -60,5 +72,29 @@ public class Projekt {
 
     public void setAppUsers(Set<AppUser> appUsers) {
         this.appUsers = appUsers;
+    }
+
+    public LocalDateTime getDataCzasUtworzenia() {
+        return dataCzasUtworzenia;
+    }
+
+    public void setDataCzasUtworzenia(LocalDateTime dataCzasUtworzenia) {
+        this.dataCzasUtworzenia = dataCzasUtworzenia;
+    }
+
+    public LocalDate getData_oddania() {
+        return data_oddania;
+    }
+
+    public void setData_oddania(LocalDate data_oddania) {
+        this.data_oddania = data_oddania;
+    }
+
+    public LocalDateTime getDataCzasModyfikacji() {
+        return dataCzasModyfikacji;
+    }
+
+    public void setDataCzasModyfikacji(LocalDateTime dataCzasModyfikacji) {
+        this.dataCzasModyfikacji = dataCzasModyfikacji;
     }
 }
