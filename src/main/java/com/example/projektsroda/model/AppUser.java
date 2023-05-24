@@ -4,8 +4,6 @@ package com.example.projektsroda.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -16,7 +14,10 @@ public class AppUser {
     @Column(name = "user_id")
     private Long id;
 
-    private String username;
+    private String firstName;
+    private String lastName;
+    private String indexNumber;
+    private String email;
     private String password;
     private String role;
 
@@ -30,14 +31,6 @@ public class AppUser {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getPassword() {
@@ -62,6 +55,38 @@ public class AppUser {
 
     public void setProjekts(Set<Projekt> projekts) {
         this.projekts = projekts;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstname) {
+        this.firstName = firstname;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastname) {
+        this.lastName = lastname;
+    }
+
+    public String getIndexNumber() {
+        return indexNumber;
+    }
+
+    public void setIndexNumber(String indexNumber) {
+        this.indexNumber = indexNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
 
