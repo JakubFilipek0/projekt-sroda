@@ -54,6 +54,21 @@ public class ProjektController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PutMapping("/projekt/{id}")
+    public ResponseEntity<Projekt> updateProjekt(@PathVariable("id") Long id, Projekt projektRequest) {
+        Projekt projektUpdate = projektRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Projekt with id: " + id + " doesn't exist"));
+        projektUpdate.setNazwa(projektRequest.getNazwa());
+        projektUpdate.setOpis(projektRequest.getOpis());
+        projektUpdate.setData_oddania(projektRequest.getData_oddania());
+        projektRepository.save(projektUpdate);
+
+        return new ResponseEntity<>(projektUpdate, HttpStatus.OK);
+    }
+
+
+
+
     @PostMapping("/projekt/{projektId}/user/{userId}")
     public ResponseEntity<?> addUserToProjekt(@PathVariable("projektId") Long projektId, @PathVariable("userId") Long userId) {
         Projekt projekt = projektRepository.findById(projektId)
