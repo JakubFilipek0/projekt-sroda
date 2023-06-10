@@ -55,7 +55,7 @@ public class ProjektController {
     }
 
     @PutMapping("/projekt/{id}")
-    public ResponseEntity<Projekt> updateProjekt(@PathVariable("id") Long id, Projekt projektRequest) {
+    public ResponseEntity<Projekt> updateProjekt(@PathVariable("id") Long id, @RequestBody Projekt projektRequest) {
         Projekt projektUpdate = projektRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Projekt with id: " + id + " doesn't exist"));
         projektUpdate.setNazwa(projektRequest.getNazwa());
